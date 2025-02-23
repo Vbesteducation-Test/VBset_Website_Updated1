@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Language Selection - VBest Education</title>
+    <link rel="stylesheet" href="assets/css/styles2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="left-section">
+                <div class="logo">
+                    <img src="assets/images/logo2.png" alt="VBest Logo">
+                </div>
+                <div class="social-icons">
+                    <a href="https://instagram.com/vbest" target="_blank"><img src="assets/images/instagram-icon.png" alt="Instagram"></a>
+                    <a href="https://facebook.com/vbest" target="_blank"><img src="assets/images/facebook-icon.png" alt="Facebook"></a>
+                </div>
+            </div>
+            <div class="right-section">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">EAMCET</a></li>
+                        <li><a href="#">ECET</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="selection-container">
+            <!-- Heading showing selected language -->
+            <h1 id="language-heading"></h1>
+            
+            <!-- Language selection dropdown (dynamically populated) -->
+            <label for="topic-selector">Select Topic:</label>
+            <select id="topic-selector" class="topic-selector">
+                <option value="">-- Select Topic --</option>
+            </select>
+
+            <!-- Submit Button -->
+            <div class="buttons">
+                <button class="submit" onclick="submitSelection()">Submit</button>
+                <button type="button" onclick="clearSelection()">Reset</button>
+            </div>
+            
+            <!-- Summary of Selections -->
+            <div class="summary" id="summary-container" style="display:none; margin-top: 20px; padding: 10px; border: 1px solid #ddd;">
+                <p><strong>Language:</strong> <span id="language-summary"></span></p>
+                <p><strong>Topic:</strong> <span id="topic-summary"></span></p>
+            </div>
+
+            <!-- Image Container -->
+            <div id="image-slider-container" style="display:none; position: relative; text-align: center; margin-top: 20px;">
+                <button id="prev-btn" class="nav-btn left" onclick="prevImage()">&#10094;</button>
+                <img id="slider-image" src="" alt="Topic Image">
+                <button id="next-btn" class="nav-btn right" onclick="nextImage()">&#10095;</button>
+            </div>
+
+            <!-- Like and Share Section -->
+            <div id="image-actions-container" style="display: none; text-align: center; margin-top: 15px;">
+                <button id="like-btn" class="action-btn" onclick="likeImage()">
+                    <i class="far fa-heart"></i> Like
+                </button>
+                <button id="share-btn" class="action-btn" onclick="shareImage()">
+                    <i class="fas fa-share-alt"></i> Share
+                </button>
+                <p id="like-count" style="margin-top: 5px; color: #555;">0 Likes</p>
+            </div>
+        </div>
+    </main>
+    
+
+    <footer>
+        <div class="footer-container">
+            <div class="about-us">
+                <h2>About Us</h2>
+                <p>VBest is committed to providing the best resources and support for students to excel in their educational journey. We strive to make learning accessible, engaging, and effective.</p>
+            </div>
+        
+            <div class="get-in-touch">
+                <h2>Get in Touch</h2>
+                <ul class="socials">
+                    <li>Email: <a href="mailto:contact@vbest.com">contact@vbest.com</a></li>
+                    <li>
+                        <a href="https://instagram.com/vbest_official" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/vbestofficial" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src = "assets/js/script4.js"></script>
+</body>
+</html>

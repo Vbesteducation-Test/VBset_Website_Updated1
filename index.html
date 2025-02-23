@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VBest Education</title>
+    <link rel="stylesheet" href="assets/css/styles_up.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="left-section">
+                <div class="logo">
+                    <img src="assets/images/logo2.png" alt="VBest Logo">
+                </div>
+                <div class="social-icons">
+                    <a href="https://instagram.com/vbest" target="_blank"><img src="assets/images/instagram-icon.png" alt="Instagram"></a>
+                    <a href="https://facebook.com/vbest" target="_blank"><img src="assets/images/facebook-icon.png" alt="Facebook"></a>
+                </div>
+            </div>
+            <div class="right-section">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">EAMCET</a></li>
+                        <li><a href="#">ECET</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-section">
+                    <div class="user-logged-in">
+                        <img src="assets/images/user-pic2.png" alt="User Picture" class="user-pic">
+                        <div class="dropdown">
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                                <a href="#">My Subscriptions</a>
+                                <a href="#">My Account</a>
+                                <a href="#">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-not-logged-in">
+                        <button class="login-btn" onclick="redirectToLogin()">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Body Content -->
+    <main>
+        <section class="welcome-section">
+            <h1 id="welcome-message">Welcome to Vbest</h1>
+            <p id="welcome-tagline">Better Understanding, Better Results.</p>
+       </section>
+        <!-- Education Section -->
+        <section class="education-section">
+            <h2>School Academics</h2>
+            <p>6th to 10th Class Telangana State Syllabus</p>
+            <div class="grade-container">
+                <div class="grade-box" onclick="redirectToSelection(6)" data-grade="6">Grade 6</div>
+                <div class="grade-box" onclick="redirectToSelection(7)" data-grade="7">Grade 7</div>
+                <div class="grade-box" onclick="redirectToSelection(8)" data-grade="8">Grade 8</div>
+                <div class="grade-box" onclick="redirectToSelection(9)" data-grade="9">Grade 9</div>
+                <div class="grade-box" onclick="redirectToSelection(10)" data-grade="10">Grade 10</div>
+            </div>
+        </section>           
+
+        <section class="entrance-exams-section">
+            <h2>Entrance Exams</h2>
+            <p>EAMCET/ECET</p>
+            <div class="entrance-container">
+                <!-- EAMCET Container -->
+                <div class="exam-container">
+                    <h3>EAMCET</h3>
+                    <div class="exam-box-container">
+                        <div class="exam-box" onclick="selectExam('EAMCET', 'Math')">  Math  </div>
+                        <div class="exam-box" onclick="selectExam('EAMCET', 'Physics')">Physics</div>
+                        <div class="exam-box" onclick="selectExam('EAMCET', 'Chemistry')">Chemistry</div>
+                        <div class="exam-box" onclick="selectExam('EAMCET', 'Others')">Others</div>
+                    </div>
+                </div>
+        
+                <!-- ECET Container -->
+                <div class="exam-container">
+                    <h3>ECET</h3>
+                    <div class="exam-box-container">
+                        <div class="exam-box" onclick="selectExam('ECET', 'Math')">Math</div>
+                        <div class="exam-box" onclick="selectExam('ECET', 'Physics')">Physics</div>
+                        <div class="exam-box" onclick="selectExam('ECET', 'Chemistry')">Chemistry</div>
+                        <span class="exam-box" onclick="selectExam('ECET', 'ECE Core')">ECE Core</span>
+                        <span class="exam-box" onclick="selectExam('ECET', 'Others')">Others</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+         <!-- Programming Languages Section -->
+        <section class="programming-languages-section">
+            <h2>Programming Languages</h2>
+            <p>Master the tools of the trade</p>
+            <div class="language-container">
+                <div class="language-box" onclick="selectLanguage('Python')">Python</div>
+                <div class="language-box" onclick="selectLanguage('Java')">Java</div>
+                <div class="language-box" onclick="selectLanguage('C++')">C++</div>
+                <div class="language-box" onclick="selectLanguage('JavaScript')">JavaScript</div>
+                <div class="language-box" onclick="selectLanguage('HTML')">HTML</div>
+                <div class="language-box" onclick="selectLanguage('CSS')">CSS</div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- About Us Section -->
+                <div class="about-us">
+                    <h2>About Us</h2>
+                    <p>VBest is committed to providing the best resources and support for students to excel in their educational journey. We strive to make learning accessible, engaging, and effective.</p>
+                </div>
+
+                <div class="useful-links">
+                    <h2>Useful Links</h2>
+                    <ul class="footer-links">
+                        <li><a href="redirectedPage2.html" class="footer-link">TS 6th to 10th</a></li>
+                        <li><a href="redirectedPage3.html?exam=EAMCET" class="footer-link">TS EAMCET</a></li>
+                        <li><a href="redirectedPage3.html?exam=ECET" class="footer-link">TS ECET</a></li>
+                        <li><a href="redirectedPage4.html" class="footer-link">Programming Languages</a></li>
+                    </ul>
+                </div>
+        
+                <!-- Get in Touch Section -->
+                <div class="get-in-touch">
+                    <h2>Get in Touch</h2>
+                    <ul class="socials">
+                        <li>Email: <a href="mailto:contact@vbest.com">contact@vbest.com</a></li>
+                        <li>
+                            <a href="https://instagram.com/vbest_official" target="_blank" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://facebook.com/vbestofficial" target="_blank" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                    </ul>
+        
+                    <form class="contact-form" onsubmit="submitContactForm(event)">
+                        <h3>Send Us a Message</h3>
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" placeholder="Your First Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" placeholder="Your Last Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </footer>   
+
+    </main>
+
+    <script>
+        function redirectToSelection(grade) {
+            const targetPage = `redirectedPage2.html?grade=${grade}`;
+            window.location.href = targetPage;
+}
+function selectExam(exam, subject) {
+    // Redirect to a new page with selected exam and subject
+    const targetPage = `redirectedPage3.html?exam=${exam}&subject=${subject}`;
+    window.location.href = targetPage;
+}
+
+function selectLanguage(language) {
+    // Redirect to a new page with selected exam and subject
+    const targetPage = `redirectedPage4.html`;
+    window.location.href = targetPage;
+}
+    </script>
+
+</body>
+</html>

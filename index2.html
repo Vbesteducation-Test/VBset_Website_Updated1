@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VBest Education</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="left-section">
+                <div class="logo">
+                    <img src="assets/images/logo2.png" alt="VBest Logo">
+                </div>
+                <div class="social-icons">
+                    <a href="https://instagram.com/vbest" target="_blank"><img src="assets/images/instagram-icon.png"
+                            alt="Instagram"></a>
+                    <a href="https://facebook.com/vbest" target="_blank"><img src="assets/images/facebook-icon.png"
+                            alt="Facebook"></a>
+                </div>
+            </div>
+            <div class="right-section">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="aiquizwithbackend/register.html">VAI Quiz</a></li> <!-- Updated Link -->
+                        <li><a href="#">Entrance Exams</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropbtn">More</a>
+                            <div class="dropdown-content">
+                                <a href="#">10th Model Papers</a>
+                                <a href="#">Vcrack Exam</a>
+                                <a href="#">School Academics</a>
+                                <a href="#">Tuitions</a>
+                                <a href="#">Internships</a>
+                                <a href="dashboard/dashboard1.html">Dashboard</a> <!-- Updated Link -->
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-section">
+                    <div class="dropdown user-logged-in">
+                        <img src="assets/images/user-pic2.png" alt="User Picture" class="user-pic dropbtn">
+                        <div class="dropdown-content">
+                            <a href="#">Profile</a>
+                            <a href="#">My Account</a>
+                            <a href="#">Log Out</a>
+                        </div>
+                    </div>
+                    <div class="user-not-logged-in">
+                        <button class="login-btn" onclick="redirectToLogin()">Login</button>
+                    </div>
+                </div>
+            </div>
+            
+            
+    </header>
+
+    <!-- Body Content -->
+    <main>
+        <section class="welcome-section">
+            <h1 id="welcome-message">Welcome to Vbest</h1>
+            <p id="welcome-tagline">Better Understanding, Better Results.</p>
+        </section>
+
+        <!-- Education Section -->
+        <section class="education-section">
+            <h2>School Academics</h2>
+            <p>6th to 10th Class Telangana State Syllabus</p>
+            <div class="education">
+                <div class="box" onclick="redirectToSelection(6)" data-grade="6">Grade 6</div>
+                <div class="box" onclick="redirectToSelection(7)" data-grade="7">Grade 7</div>
+                <div class="box" onclick="redirectToSelection(8)" data-grade="8">Grade 8</div>
+                <div class="box" onclick="redirectToSelection(9)" data-grade="9">Grade 9</div>
+                <div class="box" onclick="redirectToSelection(10)" data-grade="10">Grade 10</div>
+            </div>
+        </section>
+
+        <!-- Entrance Exams Section -->
+        <section class="education-section">
+            <h2>Entrance Exams</h2>
+            <p>JEE Mains, JEE Advanced, GATE</p>
+            <div class="education">
+                <div class="box" onclick="selectExam('EAMCET')">EAMCET</div>
+                <div class="box" onclick="selectExam('ECET')">ECET</div>
+                <div class="box" onclick="selectExam('JEE Mains')">JEE Mains</div>
+                <div class="box" onclick="selectExam('JEE Advanced')">JEE Advanced</div>
+                <div class="box" onclick="selectExam('GATE')">GATE</div>
+            </div>
+        </section>
+
+        <!-- Programming Languages Section -->
+        <section class="education-section">
+            <h2>Programming Languages</h2>
+            <p>Master the tools of the trade</p>
+            <div class="education">
+                <div class="box" onclick="selectLanguage('Python')">Python</div>
+                <div class="box" onclick="selectLanguage('Java')">Java</div>
+                <div class="box" onclick="selectLanguage('C++')">C++</div>
+                <div class="box" onclick="selectLanguage('JavaScript')">JavaScript</div>
+                <div class="box" onclick="selectLanguage('HTML')">HTML</div>
+                <div class="box" onclick="selectLanguage('CSS')">CSS</div>
+            </div>
+        </section>
+
+        <!-- About Us Section (Moved to Top) -->
+        <section class="about-us">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>VBest is committed to providing the best resources and support for students to excel in their
+                    educational journey. We strive to make learning accessible, engaging, and effective.</p>
+            </div>
+        </section>
+
+        <!-- Get in Touch & Contact Form -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <!-- Get in Touch -->
+                    <div class="get-in-touch">
+                        <h2>Get in Touch</h2>
+                        <ul>
+                            <li>Email: <a href="mailto:contact@vbest.com">contact@vbest.com</a></li>
+                            <li>
+                                <a href="https://instagram.com/vbest_official" target="_blank">
+                                    <i class="fab fa-instagram"></i> Instagram
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://facebook.com/vbestofficial" target="_blank">
+                                    <i class="fab fa-facebook-f"></i> Facebook
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form onsubmit="submitContactForm(event)">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section (Neatly Arranged Like Byju's) -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Courses</h3>
+                    <ul>
+                        <li><a href="#">6th - 10th Class</a></li>
+                        <li><a href="#">EAMCET</a></li>
+                        <li><a href="#">ECET</a></li>
+                        <li><a href="#">JEE Mains</a></li>
+                        <li><a href="#">JEE Advanced</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Programming</h3>
+                    <ul>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Java</a></li>
+                        <li><a href="#">C++</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">HTML & CSS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect with Us</h3>
+                    <ul class="social-links">
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+
+    </main>
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>

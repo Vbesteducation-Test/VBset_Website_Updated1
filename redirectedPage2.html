@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Selection - VBest Education</title>
+    <link rel="stylesheet" href="assets/css/styles2.css"> <!-- New CSS for redirected page -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="left-section">
+                <div class="logo">
+                    <img src="assets/images/logo2.png" alt="VBest Logo">
+                </div>
+                <div class="social-icons">
+                    <a href="https://instagram.com/vbest" target="_blank"><img src="assets/images/instagram-icon.png" alt="Instagram"></a>
+                    <a href="https://facebook.com/vbest" target="_blank"><img src="assets/images/facebook-icon.png" alt="Facebook"></a>
+                </div>
+            </div>
+            <div class="right-section">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">EAMCET</a></li>
+                        <li><a href="#">ECET</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-section">
+                    <div class="user-logged-in">
+                        <img src="assets/images/user-pic2.png" alt="User Picture" class="user-pic">
+                        <div class="dropdown">
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                                <a href="#">My Subscriptions</a>
+                                <a href="#">My Account</a>
+                                <a href="#">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-not-logged-in">
+                        <button class="login-btn" onclick="redirectToLogin()">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <main>
+            <div class="selection-container">
+                <h2>Selected Class: <span id="class"></span></h2> 
+                <div class="columns">
+                    <div class="selection-column">
+                        <label for="syllabus">Syllabus:</label>
+                        <select id="syllabus">
+                            <option value="">Select Syllabus</option>
+                            <option value="cbse">CBSE</option>
+                            <option value="icse">ICSE</option>
+                            <option value="state">State</option>
+                        </select>
+        
+                        <label for="chapter">Chapter:</label>
+                        <select id="chapter">
+                            <option value="">Select Chapter</option>
+                            <option value="chapter1">Chapter 1</option>
+                            <option value="chapter2">Chapter 2</option>
+                            <option value="chapter3">Chapter 3</option>
+                        </select>
+                    </div>
+            
+                    <div class="selection-column">
+                        <label for="subject">Subject:</label>
+                        <select id="subject">
+                            <option value="">Select Subject</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                        </select>
+            
+                        <label for="exercise" id="exercise-label" style="display: none;">Exercise:</label>
+                        <select id="exercise" style="display: none;">
+                            <option value="">Select Exercise</option>
+                            <option value="exercise1">Exercise 1</option>
+                            <option value="exercise2">Exercise 2</option>
+                            <option value="exercise3">Exercise 3</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            <div class="buttons">
+                <button type="button" onclick="displaySummary()">Submit</button>
+                <button type="button" onclick="clearSelection()">Reset</button>
+            </div>
+
+            <!-- Summary Section -->
+            <div class="summary" id="summary-container" style="display:none; margin-top: 20px; padding: 10px; border: 1px solid #ddd;">
+                <p><strong>Class:</strong> <span id="class-summary"></span></p>
+                <p><strong>Syllabus:</strong> <span id="syllabus-summary"></span></p>
+                <p><strong>Subject:</strong> <span id="subject-summary"></span></p>
+                <p><strong>Chapter:</strong> <span id="chapter-summary"></span></p>
+                <p><strong>Topic:</strong> <span id="topic-summary"></span></p>
+            </div>
+
+            <!-- Image Container -->
+            <div id="image-slider-container" style="display:none; position: relative; text-align: center; margin-top: 20px;">
+                <button id="prev-btn" class="nav-btn left" onclick="prevImage()">&#10094;</button>
+                <img id="slider-image" src="" alt="Question Bank Image">
+                <button id="next-btn" class="nav-btn right" onclick="nextImage()">&#10095;</button>
+            </div>
+
+            <!-- Like and Share Section -->
+            <div id="image-actions-container" style="display: none; text-align: center; margin-top: 15px;">
+                <button id="like-btn" class="action-btn" onclick="likeImage()">
+                    <i class="far fa-heart"></i> Like
+                </button>
+                <button id="share-btn" class="action-btn" onclick="shareImage()">
+                    <i class="fas fa-share-alt"></i> Share
+                </button>
+                <p id="like-count" style="margin-top: 5px; color: #555;">0 Likes</p>
+            </div>
+
+
+            
+            
+        </div>
+    </main>
+
+    <footer>
+        <!-- Footer from index.html -->
+        <div class="footer-container">
+            <div class="about-us">
+                <h2>About Us</h2>
+                <p>VBest is committed to providing the best resources and support for students to excel in their educational journey. We strive to make learning accessible, engaging, and effective.</p>
+            </div>
+        
+            <div class="get-in-touch">
+                <h2>Get in Touch</h2>
+                <ul class="socials">
+                    <li>Email: <a href="mailto:contact@vbest.com">contact@vbest.com</a></li>
+                    <li>
+                        <a href="https://instagram.com/vbest_official" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/vbestofficial" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBMq39XflXjqzN8swIDIwFMv5u296u8HqI",
+            authDomain: "frontend-6a76e.firebaseapp.com",
+            databaseURL: "https://frontend-6a76e-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "frontend-6a76e",
+            storageBucket: "frontend-6a76e.firebasestorage.app",
+            messagingSenderId: "819072748561",
+            appId: "1:819072748561:web:864099223b870a767475b0",
+            measurementId: "G-7CSKSLTHK3"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getDatabase(app);
+
+        // Function to fetch data from Firebase and populate class dropdown
+        async function fetchData() {
+            try {
+                const classRef = ref(db, 'data');
+                const classSnapshot = await get(classRef);
+
+                if (classSnapshot.exists()) {
+                    const classes = classSnapshot.val();
+                    console.log("Classes: ", classes);
+
+                    populateClassDropdown(classes);
+                } else {
+                    console.log("No data available");
+                }
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            }
+        }
+
+        // Function to populate class dropdown
+        function populateClassDropdown(classes) {
+            const classDropdown = document.getElementById('class-selector');
+            classDropdown.innerHTML = ''; // Clear existing options
+
+            // Add default option
+            const defaultOption = document.createElement('option');
+            defaultOption.textContent = 'Select Class';
+            classDropdown.appendChild(defaultOption);
+
+            // Add options for each class (class6, class7, etc.)
+            for (const classKey in classes) {
+                if (classes.hasOwnProperty(classKey)) {
+                    const option = document.createElement('option');
+                    option.value = classKey;
+                    option.textContent = classKey;  // Use class name as option text
+                    classDropdown.appendChild(option);
+                }
+            }
+
+            // Check if URL has a class parameter and set it
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedClass = urlParams.get('class');
+            if (selectedClass && classes[selectedClass]) {
+                classDropdown.value = selectedClass;  // Pre-select the class
+                populateSubjectDropdown(classes[selectedClass]);
+            }
+
+            // Add event listener to update subject dropdown when class is selected
+            classDropdown.addEventListener('change', (e) => {
+                const selectedClass = e.target.value;
+                if (selectedClass) {
+                    populateSubjectDropdown(classes[selectedClass]);
+                } else {
+                    clearDropdown('subject-selector');
+                    clearDropdown('chapter-selector');
+                }
+            });
+        }
+
+        // Function to populate subject dropdown based on selected class
+        function populateSubjectDropdown(classData) {
+            const subjectDropdown = document.getElementById('subject-selector');
+            subjectDropdown.innerHTML = ''; // Clear existing options
+
+            const defaultOption = document.createElement('option');
+            defaultOption.textContent = 'Select Subject';
+            subjectDropdown.appendChild(defaultOption);
+
+            for (const subject in classData) {
+                if (classData.hasOwnProperty(subject)) {
+                    const option = document.createElement('option');
+                    option.value = subject;
+                    option.textContent = subject;
+                    subjectDropdown.appendChild(option);
+                }
+            }
+
+            // Add event listener to update chapter dropdown when subject is selected
+            subjectDropdown.addEventListener('change', (e) => {
+                const selectedSubject = e.target.value;
+                if (selectedSubject) {
+                    populateChapterDropdown(classData[selectedSubject]);
+                } else {
+                    clearDropdown('chapter-selector');
+                }
+            });
+        }
+
+        // Function to populate chapter dropdown based on selected subject
+        function populateChapterDropdown(subjectData) {
+            const chapterDropdown = document.getElementById('chapter-selector');
+            chapterDropdown.innerHTML = ''; // Clear existing options
+
+            const defaultOption = document.createElement('option');
+            defaultOption.textContent = 'Select Chapter';
+            chapterDropdown.appendChild(defaultOption);
+
+            subjectData.chapters.forEach(chapter => {
+                const option = document.createElement('option');
+                option.value = chapter;
+                option.textContent = chapter;
+                chapterDropdown.appendChild(option);
+            });
+        }
+
+        // Function to clear dropdown
+        function clearDropdown(dropdownId) {
+            const dropdown = document.getElementById(dropdownId);
+            dropdown.innerHTML = '';
+            const defaultOption = document.createElement('option');
+            defaultOption.textContent = 'Select Option';
+            dropdown.appendChild(defaultOption);
+        }
+
+        // Call fetchData to load the dropdowns when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchData();
+        });
+    </script> -->
+
+    <script src = "assets/js/script2.js"></script>
+</body>
+</html>

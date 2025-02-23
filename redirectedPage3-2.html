@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Selection - VBest Education</title>
+    <link rel="stylesheet" href="assets/css/styles2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Header from index.html -->
+    <header>
+        <div class="header-container">
+            <div class="left-section">
+                <div class="logo">
+                    <img src="assets/images/logo2.png" alt="VBest Logo">
+                </div>
+                <div class="social-icons">
+                    <a href="https://instagram.com/vbest" target="_blank"><img src="assets/images/instagram-icon.png" alt="Instagram"></a>
+                    <a href="https://facebook.com/vbest" target="_blank"><img src="assets/images/facebook-icon.png" alt="Facebook"></a>
+                </div>
+            </div>
+            <div class="right-section">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">EAMCET</a></li>
+                        <li><a href="#">ECET</a></li>
+                        <li><a href="#">More</a></li>
+                    </ul>
+                </nav>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button>🔍</button>
+                </div>
+                <div class="user-section">
+                    <div class="user-logged-in">
+                        <img src="assets/images/user-pic.png" alt="User Picture" class="user-pic">
+                        <div class="dropdown">
+                            <span class="dropdown-arrow">⬇</span>
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                                <a href="#">My Subscriptions</a>
+                                <a href="#">My Account</a>
+                                <a href="#">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-not-logged-in">
+                        <button class="login-btn" onclick="redirectToLogin()">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="selection-container">
+            <!-- Display Selected Exam and Subject -->
+            <h2>Selected Exam: <span id="exam-name"></span></h2>        
+            <div class="columns">
+                <div class="selection-column">
+                   
+        
+                    <label for="class">Class:</label>
+                    <select id="class">
+                        <option>Loading...</option>
+                    </select>
+                </div>
+        
+                <div class="selection-column">
+                    <label for="subject">Subject:</label>
+                    <select id="subject">
+                        <option>Loading...</option>
+                    </select>
+        
+                    <label for="topic">Topic:</label>
+                    <select id="topic">
+                        <option>Loading...</option>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="buttons">
+                <button type="button" onclick="displaySummary()">Submit</button>
+                <button type="button"  onclick="clearSelection()">Reset</button>
+            </div>
+    
+            <!-- Summary of Selections -->
+            <div class="summary" id="summary-container" style="display:none;">
+                <p><strong>Grade:</strong> <span id="grade-summary"></span></p>
+                <p><strong>Chapters:</strong> <span id="chapter-summary"></span></p>
+            </div>
+    
+            <!-- Image Carousel -->
+            <div class="image-container" id="image-container" style="display:none;">
+                <button class="prev" onclick="prevImage()">&#10094;</button>
+                <img class="image-slide" src="image1.jpg" alt="Chapter Image 1" id="carousel-img">
+                <button class="next" onclick="nextImage()">&#10095;</button>
+            </div>
+    
+            <!-- Like Heart Button -->
+            <button class="heart-button" onclick="toggleHeart(this)" style="display:none;">
+                <span class="heart">&#9825;</span>
+            </button>
+    
+            <!-- Share Option -->
+            <button class="share-button" style="display:none;">
+                <i class="fas fa-share-alt"></i> Share
+            </button>
+        </div>
+    </main>
+    
+
+    <footer>
+        <!-- Footer from index.html -->
+        <div class="footer-container">
+            <div class="about-us">
+                <h2>About Us</h2>
+                <p>VBest is committed to providing the best resources and support for students to excel in their educational journey. We strive to make learning accessible, engaging, and effective.</p>
+            </div>
+        
+            <div class="get-in-touch">
+                <h2>Get in Touch</h2>
+                <ul class="socials">
+                    <li>Email: <a href="mailto:contact@vbest.com">contact@vbest.com</a></li>
+                    <li>
+                        <a href="https://instagram.com/vbest_official" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/vbestofficial" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCSJGmFgVxoITGWuYQdCn1x5K0WhlBPnMs",
+            authDomain: "gemini-d42d9.firebaseapp.com",
+            databaseURL: "https://gemini-d42d9-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "gemini-d42d9",
+            storageBucket: "gemini-d42d9.firebasestorage.app",
+            messagingSenderId: "34932493187",
+            appId: "1:34932493187:web:8f435569f7633d3a7984b6"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Function to load dropdowns
+        async function loadDropdowns() {
+            try {
+                console.log("Fetching classes from Firebase...");
+
+                const classDropdown = document.getElementById("class");
+                const subjectDropdown = document.getElementById("subject");
+                const topicDropdown = document.getElementById("topic");
+
+                classDropdown.innerHTML = `<option value="">Loading...</option>`;
+                subjectDropdown.innerHTML = `<option value="">Select a Class first</option>`;
+                topicDropdown.innerHTML = `<option value="">Select a Subject first</option>`;
+
+                // Fetch classes from Firebase
+                const classesRef = ref(database, "classes");
+                const snapshot = await get(classesRef);
+
+                if (snapshot.exists()) {
+                    console.log("Classes data found:", snapshot.val());
+
+                    classDropdown.innerHTML = `<option value="">Select Class</option>`;
+                    const classes = snapshot.val();
+
+                    // Populate class dropdown
+                    Object.keys(classes).forEach(classKey => {
+                        const option = document.createElement("option");
+                        option.value = classKey;
+                        option.textContent = classKey;
+                        classDropdown.appendChild(option);
+                    });
+
+                    // Add event listener for subjects
+                    classDropdown.addEventListener("change", function () {
+                        console.log(`Class selected: ${this.value}`);
+                        loadSubjects(this.value, subjectDropdown, topicDropdown);
+                    });
+                } else {
+                    console.warn("No classes available in Firebase.");
+                    classDropdown.innerHTML = `<option value="">No classes available</option>`;
+                }
+            } catch (error) {
+                console.error("Error fetching classes:", error);
+            }
+        }
+
+        // Function to load subjects
+        async function loadSubjects(selectedClass, subjectDropdown, topicDropdown) {
+            if (!selectedClass) {
+                subjectDropdown.innerHTML = `<option value="">Select a Class first</option>`;
+                topicDropdown.innerHTML = `<option value="">Select a Subject first</option>`;
+                return;
+            }
+
+            try {
+                console.log(`Fetching subjects for class: ${selectedClass}`);
+                const subjectsRef = ref(database, `classes/${selectedClass}/subjects`);
+                const snapshot = await get(subjectsRef);
+
+                if (snapshot.exists()) {
+                    console.log("Subjects data found:", snapshot.val());
+
+                    subjectDropdown.innerHTML = `<option value="">Select Subject</option>`;
+                    const subjects = snapshot.val();
+
+                    Object.keys(subjects).forEach(subjectKey => {
+                        const option = document.createElement("option");
+                        option.value = subjectKey;
+                        option.textContent = subjectKey;
+                        subjectDropdown.appendChild(option);
+                    });
+
+                    // Add event listener for topics
+                    subjectDropdown.addEventListener("change", function () {
+                        console.log(`Subject selected: ${this.value}`);
+                        loadTopics(selectedClass, this.value, topicDropdown);
+                    });
+                } else {
+                    console.warn("No subjects available in Firebase.");
+                    subjectDropdown.innerHTML = `<option value="">No subjects available</option>`;
+                }
+            } catch (error) {
+                console.error("Error fetching subjects:", error);
+            }
+        }
+
+        // Function to load topics
+        async function loadTopics(selectedClass, selectedSubject, topicDropdown) {
+            if (!selectedSubject) {
+                topicDropdown.innerHTML = `<option value="">Select a Subject first</option>`;
+                return;
+            }
+
+            try {
+                console.log(`Fetching topics for subject: ${selectedSubject}`);
+                const topicsRef = ref(database, `classes/${selectedClass}/subjects/${selectedSubject}/topics`);
+                const snapshot = await get(topicsRef);
+
+                if (snapshot.exists()) {
+                    console.log("Topics data found:", snapshot.val());
+
+                    topicDropdown.innerHTML = `<option value="">Select Topic</option>`;
+                    const topics = snapshot.val();
+
+                    Object.keys(topics).forEach(topicKey => {
+                        const option = document.createElement("option");
+                        option.value = topicKey;
+                        option.textContent = topics[topicKey];
+                        topicDropdown.appendChild(option);
+                    });
+                } else {
+                    console.warn("No topics available in Firebase.");
+                    topicDropdown.innerHTML = `<option value="">No topics available</option>`;
+                }
+            } catch (error) {
+                console.error("Error fetching topics:", error);
+            }
+        }
+
+        // Load dropdowns on page load
+        window.onload = loadDropdowns;
+    </script>
+</body>
+</html>

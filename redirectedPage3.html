@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Selection - VBest Education</title>
+    <link rel="stylesheet" href="assets/css/styles2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="left-section">
+                <div class="logo">
+                    <img src="assets/images/logo2.png" alt="VBest Logo">
+                </div>
+                <div class="social-icons">
+                    <a href="https://instagram.com/vbest" target="_blank"><img src="assets/images/instagram-icon.png" alt="Instagram"></a>
+                    <a href="https://facebook.com/vbest" target="_blank"><img src="assets/images/facebook-icon.png" alt="Facebook"></a>
+                </div>
+            </div>
+            <div class="right-section">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">EAMCET</a></li>
+                        <li><a href="#">ECET</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-section">
+                    <div class="user-logged-in">
+                        <img src="assets/images/user-pic2.png" alt="User Picture" class="user-pic">
+                        <div class="dropdown">
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                                <a href="#">My Subscriptions</a>
+                                <a href="#">My Account</a>
+                                <a href="#">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-not-logged-in">
+                        <button class="login-btn" onclick="redirectToLogin()">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="selection-container">
+            <h2>Selected Exam: <span id="exam-name"></span></h2>      
+            <div class="columns">
+                <div class="selection-column">
+                    <label for="class">Class:</label>
+                    <select id="class">
+                        <option value="">Select Class</option>
+                    </select>
+
+                    <label for="chapter">Chapter:</label>
+                    <select id="chapter" disabled>
+                        <option value="">Select Chapter</option>
+                    </select>
+                </div>
+        
+                <div class="selection-column">
+                    <label for="subject">Subject:</label>
+                    <select id="subject" disabled>
+                        <option value="">Select Subject</option>
+                    </select>
+        
+                    <label for="topic">Exercise:</label>
+                    <select id="topic" disabled>
+                        <option value="">Select Exercise</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="button" onclick="displaySummary()">Submit</button>
+                <button type="button" onclick="clearSelection()">Reset</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="about-us">
+                <h2>About Us</h2>
+                <p>VBest is committed to providing the best resources and support for students to excel in their educational journey.</p>
+            </div>
+            <div class="get-in-touch">
+                <h2>Get in Touch</h2>
+                <ul class="socials">
+                    <li>Email: <a href="mailto:contact@vbest.com">contact@vbest.com</a></li>
+                    <li>
+                        <a href="https://instagram.com/vbest_official" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/vbestofficial" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script3.js"></script>
+</body>
+</html>
+

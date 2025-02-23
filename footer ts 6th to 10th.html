@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Section</title>
+    <link rel="stylesheet" href="assets/css/styles_up.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="left-section">
+                <div class="logo">
+                    <img src="logo2.png" alt="VBest Logo">
+                </div>
+                <div class="social-icons">
+                    <a href="https://instagram.com/vbest" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+                    <a href="https://facebook.com/vbest" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+                </div>
+            </div>
+            <div class="right-section">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">EAMCET</a></li>
+                        <li><a href="#">ECET</a></li>
+                        <li><a href="#">More</a></li>
+                    </ul>
+                </nav>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button>🔍</button>
+                </div>
+                <div class="user-section">
+                    <div class="user-logged-in">
+                        <img src="user-pic.png" alt="User Picture" class="user-pic">
+                        <div class="dropdown">
+                            <span class="dropdown-arrow">⬇</span>
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                                <a href="#">My Subscriptions</a>
+                                <a href="#">My Account</a>
+                                <a href="#">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-not-logged-in">
+                        <button class="login-btn" onclick="redirectToLogin()">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="education-section">
+            <h2>Education</h2>
+            <p id="education-intro">Loading specific grade details...</p>
+            <div class="grade-container">
+                <div class="grade-box" data-grade="6">Grade 6</div>
+                <div class="grade-box" data-grade="7">Grade 7</div>
+                <div class="grade-box" data-grade="8">Grade 8</div>
+                <div class="grade-box" data-grade="9">Grade 9</div>
+                <div class="grade-box" data-grade="10">Grade 10</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- About Us Section -->
+            <div class="about-us">
+                <h2>About Us</h2>
+                <p>VBest is committed to providing the best resources and support for students to excel in their educational journey. We strive to make learning accessible, engaging, and effective.</p>
+            </div>
+    
+            <!-- Get in Touch Section -->
+            <div class="get-in-touch">
+                <h2>Get in Touch</h2>
+                <ul class="socials">
+                    <li>Email: <a href="mailto:contact@vbest.com">contact@vbest.com</a></li>
+                    <li>
+                        <a href="https://instagram.com/vbest_official" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/vbestofficial" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                </ul>
+    
+                <form class="contact-form" onsubmit="submitContactForm(event)">
+                    <h3>Send Us a Message</h3>
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" placeholder="Your First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" placeholder="Your Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </footer> 
+
+    <script src = "assets/js/script.js">
+        const urlParams = new URLSearchParams(window.location.search);
+        const grade = urlParams.get('grade');
+
+        const intro = document.getElementById('education-intro');
+        if (grade) {
+            intro.textContent = `Welcome to Grade ${grade}'s Education Section`;
+        } else {
+            intro.textContent = 'Explore various grades.';
+        }
+    </script>
+</body>
+</html>
